@@ -1,0 +1,3 @@
+include ':lib_permission'
+include ':app'
+rootProject.name = "PermissionAnnotations"
