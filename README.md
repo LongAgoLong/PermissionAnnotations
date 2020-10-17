@@ -11,6 +11,12 @@
 ### project的gradle依赖
 
 ```
+buildscript {
+    dependencies {
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+    }
+}
+
 allprojects {
 	repositories {
 		...
