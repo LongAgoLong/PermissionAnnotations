@@ -63,7 +63,7 @@ dependencies {
 
 ## 2.注解
 
-**<u>TIP：如果是在普通类（非Activity/Fragment/Service等继承ContextWrapper类）中注解申请权限，则该类需要实现一个getContext()方法供注解调用</u>**
+**<u>TIP：如果是在普通类（非Activity/Fragment/Service等继承ContextWrapper类）中注解申请权限，则该类需要实现IContext接口，提供一个getContext()方法供注解调用</u>**
 
 ### 2.1 PermissionApply-申请权限注解
 

@@ -6,12 +6,9 @@ import android.util.Log
 import com.leo.lib_permission.annotations.PermissionApply
 import com.leo.lib_permission.annotations.PermissionRefused
 import com.leo.lib_permission.annotations.PermissionRefusedForever
+import com.leo.lib_permission.interfaces.IContext
 
-class PermissionTest constructor(private val mContext: Context) {
-
-    fun getContext(): Context {
-        return mContext;
-    }
+class PermissionTest constructor(private val mContext: Context) : IContext {
 
     @PermissionApply(
             permissions = [Manifest.permission.WRITE_CALENDAR,
@@ -46,5 +43,9 @@ class PermissionTest constructor(private val mContext: Context) {
             builder.append("${s}\n")
         }
         Log.e("LEOTEST", builder.toString())
+    }
+
+    override fun getContext(): Context {
+        return mContext
     }
 }
