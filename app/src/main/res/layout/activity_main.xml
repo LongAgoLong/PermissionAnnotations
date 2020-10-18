@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".MainActivity">
+    tools:context=".SecondActivity">
 
     <Button
         android:id="@+id/cameraRequestBtn"
@@ -13,6 +13,15 @@
         android:layout_height="wrap_content"
         android:text="申请权限"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/utilPermissionBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:text="工具类申请权限"
+        app:layout_constraintLeft_toRightOf="@+id/cameraRequestBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

@@ -2,12 +2,6 @@ package com.leo.lib_permission.aspect;
 
 import android.content.Context;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-
 import androidx.fragment.app.Fragment;
 
 import com.leo.lib_permission.activity.PermissionActivity;
@@ -16,6 +10,12 @@ import com.leo.lib_permission.annotations.PermissionRefused;
 import com.leo.lib_permission.annotations.PermissionRefusedForever;
 import com.leo.lib_permission.interfaces.PermissionCallback;
 import com.leo.lib_permission.utils.PermissionUtil;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.reflect.Method;
 
@@ -34,6 +34,16 @@ public class PermissionAspect {
             context = (Context) aThis;
         } else if (aThis instanceof Fragment) {
             context = ((Fragment) aThis).getContext();
+        } else {
+            // 不是在Activity/Fragment/Service中请求权限，
+            // 则该类需要提供getContext()方法
+            try {
+                Class<?> aClass = aThis.getClass();
+                Method getContext = aClass.getMethod("getContext", null);
+                context = (Context) getContext.invoke(aThis, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();

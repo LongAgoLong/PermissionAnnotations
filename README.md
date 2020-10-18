@@ -4,6 +4,8 @@
 
 ## 基于AOP实现通过注解来完成权限动态申请
 
+### 可在普通类中标注调用！
+
 [![](https://jitpack.io/v/LongAgoLong/PermissionAnnotations.svg)](https://jitpack.io/#LongAgoLong/PermissionAnnotations)
 
 ## 1.依赖
@@ -60,6 +62,8 @@ dependencies {
 ```
 
 ## 2.注解
+
+**<u>TIP：如果是在普通类（非Activity/Fragment/Service等继承ContextWrapper类）中注解申请权限，则该类需要实现一个getContext()方法供注解调用</u>**
 
 ### 2.1 PermissionApply-申请权限注解
 
